@@ -17,8 +17,8 @@ public class Person {
         this.occupation = occupation;
 
         String[] parts = name.split(" ");
-        if (parts.length != 2)
-            throw new IllegalArgumentException("name should follow firstName Lastname format");
+        if (parts.length < 2)
+            throw new IllegalArgumentException("name should follow firstName lastName format");
         else
             this.name = name;
     }
@@ -36,6 +36,36 @@ public class Person {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
         return age == person.age && Objects.equals(name, person.name) && Objects.equals(occupation, person.occupation);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public Person() {
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Person{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", occupation='").append(occupation).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
 }
